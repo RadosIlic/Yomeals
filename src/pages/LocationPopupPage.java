@@ -50,7 +50,7 @@ public class LocationPopupPage extends BasePage {
 	
 	public void selectLocation(String locationName) {
 		this.getKeyword().click();
-		String dataValue = this.getLocationItem("Delaware Avenue - Albany").getAttribute("data-value");
+		String dataValue = this.getLocationItem(locationName).getAttribute("data-value");
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("arguments[0].value=arguments[1];", this.getLocationInput(), dataValue);
 		js.executeScript("arguments[0].click();", this.getSubmit());
