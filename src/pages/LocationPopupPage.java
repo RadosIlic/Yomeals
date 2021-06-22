@@ -6,10 +6,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class LocationPopupPage extends BasePage {
-	
+
 	//Page constructor 
-	public LocationPopupPage(WebDriver driver) {
-		super(driver);
+	public LocationPopupPage(WebDriver driver, JavascriptExecutor js) {
+		super(driver, js);
 	}
 
 	// Web elements for closing and opening popup location window
