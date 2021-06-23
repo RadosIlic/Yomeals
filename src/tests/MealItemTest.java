@@ -9,6 +9,7 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -56,8 +57,8 @@ public class MealItemTest extends BaseTest {
 				
 	}
 	
-	// COMPLETED
-	@Test(priority=2)
+	
+	@Test(priority=1)
 	public void addMealToFavourite() throws InterruptedException {
 		//Landing page
 		driver.get(baseUrl + "meal/lobster-shrimp-chicken-quesadilla-combo");
@@ -77,6 +78,10 @@ public class MealItemTest extends BaseTest {
 		//Navigate to new url
 		driver.get(baseUrl + "guest-user/login-form");
 		
+		// II way of going to login page
+//		WebElement loginBtn = driver.findElement(By.xpath("//li[@class='filled']/a"));
+//		loginBtn.click();
+		
 		//Login with valid credentials
 		loginPage.userLogin(email, password);
 		
@@ -87,14 +92,14 @@ public class MealItemTest extends BaseTest {
 		mealPage.favoriteMeal();
 
 		//Verify "Product has been added to your favorites" message
-		Thread.sleep(1000);
+		Thread.sleep(2000);
 		String mealAddedToFavorites = mealPage.getMealAddedToCartMessage().getText();
 		System.out.println(mealAddedToFavorites);
 		Assert.assertTrue(mealAddedToFavorites.contains("Product has been added to your favorites"), "[ERROR] Unexpected error-Product added message failed");
 		
 	}
 	
-	//COMPLETED
+	
 	@Test(priority=0) 
 	public void clearCart() throws IOException, InterruptedException {
 		
@@ -119,7 +124,7 @@ public class MealItemTest extends BaseTest {
 			String mealUrl = sheet.getRow(i).getCell(0).getStringCellValue();
 			int quantity = (int) sheet.getRow(i).getCell(1).getNumericCellValue();
 			
-			Thread.sleep(3000);
+			Thread.sleep(1000);
 			driver.get(mealUrl);
 			
 			Thread.sleep(1000);
