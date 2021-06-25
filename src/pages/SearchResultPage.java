@@ -17,8 +17,8 @@ public class SearchResultPage extends BasePage {
 		return driver.findElements(By.xpath("//*[@class='product-name']/a"));
 	}
 	
-	public void totalSearchResult() {
-		int searchResultCount = this.getSearchResults().size();
+	public int totalSearchResult() {
+		return getSearchResults().size();
 	}
 	
 	
